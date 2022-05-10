@@ -8,6 +8,14 @@
       <span class="price">$ {{ product.price }}</span>
       </li> 
     </ul>
+    <h2>Product List One half</h2>
+    <ul>
+      <!-- li for each element from props array -->
+      <li v-for="product in saleProducts">
+      <span class="name">{{ product.name }}</span>
+      <span class="price">$ {{ product.price }}</span>
+      </li> 
+    </ul>
   </div>
 </template>
 
@@ -19,10 +27,25 @@ export default {
     
   //   }
   // }
-   computed: {
+  computed: {
     products() {
       // this will get the products from defined store
       return this.$store.state.products
+    },
+    saleProducts() {
+      // when this code is move on the store.js then is no need here
+
+      // // create a new one using map function and old products
+      // var saleProducts = this.$store.state.products.map(product => {
+      //   return { // is an object ...
+      //     name: '**' + product.name + '**',
+      //     price: product.price/2
+      //   }
+      // });
+      // return saleProducts; // this return will be used in ul -> li area 
+
+      // the new code will use this and return like : 
+      return this.$store.getters.saleProducts
     }
   }
 }
