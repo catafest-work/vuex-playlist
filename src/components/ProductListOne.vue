@@ -8,6 +8,7 @@
       <span class="price">$ {{ product.price }}</span>
       </li> 
     </ul>
+    <button v-on:click="reducePrice">Reduce Price</button>
     <h2>Product List One half</h2>
     <ul>
       <!-- li for each element from props array -->
@@ -45,6 +46,16 @@ export default {
 
       // the new code will use this and return like : 
       return this.$store.getters.saleProducts
+    }
+  },
+  methods: {
+    reducePrice: function() {
+      // this.$store.state.products.forEach(product => {
+      //   product.price -= 1;
+      // })
+
+      //  need to commit mutation defined in state.js before
+      this.$store.commit('reducePrice');
     }
   }
 }
