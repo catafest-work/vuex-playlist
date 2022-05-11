@@ -8,7 +8,7 @@
       <span class="price">$ {{ product.price }}</span>
       </li> 
     </ul>
-    <button v-on:click="reducePrice">Reduce Price</button>
+    <button v-on:click="reducePrice(4)">Reduce Price</button>
     <h2>Product List One half</h2>
     <ul>
       <!-- li for each element from props array -->
@@ -49,13 +49,17 @@ export default {
     }
   },
   methods: {
-    reducePrice: function() {
+    reducePrice: function(amount) {
       // this.$store.state.products.forEach(product => {
       //   product.price -= 1;
       // })
 
       //  need to commit mutation defined in state.js before
-      this.$store.commit('reducePrice');
+      // mutation 
+      //this.$store.commit('reducePrice');
+      // action 
+
+      this.$store.dispatch('reducePrice', amount); // also I can set an amount to send data 
     }
   }
 }
