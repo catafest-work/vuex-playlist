@@ -21,6 +21,9 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex';
+import {mapGetters} from 'vuex';
+
 export default {
   // props: ['products'],
   // data() {
@@ -32,6 +35,10 @@ export default {
       // this will get the products from defined store
       return this.$store.state.products
     },
+
+    /*
+    //  this no need when implement mapping getters
+
     saleProducts() {
       // when this code is move on the store.js then is no need here
 
@@ -47,9 +54,19 @@ export default {
       // the new code will use this and return like : 
       return this.$store.getters.saleProducts
     }
+    
+    */
+    // using this for mapping getters and setters
+    ...mapGetters([
+      'saleProducts' // this map saleProducts getters from store.js 
+      /* , 'yournext', 'nextone' */
+    ]) 
+
   },
   methods: {
-    reducePrice: function(amount) {
+      /*
+      //  this no need when implement mapping actions
+      reducePrice: function(amount) {
       // this.$store.state.products.forEach(product => {
       //   product.price -= 1;
       // })
@@ -60,8 +77,11 @@ export default {
       // action 
 
       this.$store.dispatch('reducePrice', amount); // also I can set an amount to send data 
+      */
+      ...mapActions([
+        'reducePrice'  // this map reducePrice actions from store.js 
+      ])
     }
-  }
 }
 </script>
 
